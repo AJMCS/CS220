@@ -37,7 +37,7 @@ M=M-D // RAM[0] -= 3
 0;JMP // Continue Loop
 
 //-----------------------
-
+ 
 (ENDLOOP)
 
 (END) // Infinite Loop
