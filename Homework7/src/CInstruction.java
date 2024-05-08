@@ -96,27 +96,30 @@ public class CInstruction extends Instruction
         int beginIndex = 0;
         
 
-        //Capture dest
+        //------Capture Dest ------\\
+
         if(indexOfEquals != -1)
         {
             dest = assemblyCode.substring(0, indexOfEquals).trim();
         }
 
-        //Capture jump
+        //------ Capture Jump ------\\
+
         if(indexOfColon != -1)
         {
-            jump = assemblyCode.substring(indexOfEquals + 1).trim();
+            jump = assemblyCode.substring(indexOfColon + 1).trim();
         }
 
-        //Capture comp
 
-        //Index to begin colon if there exists an equals sign
+        //------ Capture Comp ------\\
+
+        //If there exists an equals sign, beginIndex should be the index after it
         if(indexOfEquals != -1)
         {
             beginIndex = indexOfEquals + 1;
         }
 
-        //index to end substring if there exists a colon
+        //If there exists a colon, endIndex should be the index before it
         if (indexOfColon != -1) 
         {
             endIndex = indexOfColon;
@@ -124,12 +127,13 @@ public class CInstruction extends Instruction
 
         comp =  assemblyCode.substring(beginIndex, endIndex).trim();
 
+
         //Append machine code together
-        machineCode = "111"  + compCodes.get(comp) + compCodes.get(dest) + jumpCodes.get(jump);
+        machineCode = "111"  + compCodes.get(comp) + destCodes.get(dest) + jumpCodes.get(jump);
     }
 
 
-    //------ Methods ------\\
+    //------ toString ------\\
 
     @Override
     public String toString()

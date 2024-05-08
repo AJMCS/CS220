@@ -8,7 +8,10 @@ public class AssemblyFileParser
 {
     //Member variables
     private List<String> cleanAssemblyCode;
+    private List<Instruction> parsedAssemblyInstructions;
     private Scanner fileReader;
+
+    
 
 
     //Constructor
@@ -17,11 +20,12 @@ public class AssemblyFileParser
         //Initialize variables
         File assemblyFile = new File(fileName);
         cleanAssemblyCode = new ArrayList<>();
+        parsedAssemblyInstructions = new ArrayList<>();
 
         //Throw exception if file does not exist
         if(!assemblyFile.exists())
         {
-            throw new FileNotFoundException("File Not Found.");
+            throw new FileNotFoundException("File Not Found." + assemblyFile.getAbsolutePath());
         }
 
          //Throw exception if file is empty
@@ -32,24 +36,32 @@ public class AssemblyFileParser
 
 
         //Create a Scanner to read the file and make first pass
-        //First Pass Objective: remove all comments and whitespace from the file
+        //First Pass Objective: remove all comments and whitespace from the file and resolves all labels
         fileReader = new Scanner(assemblyFile);
         makeFirstPass();
 
 
-        //Second Pass Objective:
-        //makeSecondPass();
+        //Second Pass Objective: Resolves all variables and Creates the A and C Instructions
+        makeSecondPass();
+
+        //Close scanner object
         fileReader.close();
+    }
 
-
-
+    //------ Getter ------\\
+    public List<Instruction> getParsedAssemblyInstructions() 
+    {
+        return parsedAssemblyInstructions;
     }
 
 
+    //------ Make First Pass ------\\
+
     private void makeFirstPass() 
     {
-        //iniitalize variables
+        //Iniitalize variables
         String rawLine, cleanLine, returnLine;
+        int romAddress = 0;
 
         //Loop through file
         while(fileReader.hasNextLine())
@@ -61,13 +73,81 @@ public class AssemblyFileParser
             //If the entire line is not a comment or whitespace, add it to our assemblyCode
             if(!cleanLine.isEmpty())
             {
-                cleanAssemblyCode.add(cleanLine);
+
+                //Check if the cleanLine is a label
+                if(cleanLine.startsWith("(") && cleanLine.endsWith(")"))
+                {
+                    insertLabelInSymbolTable(cleanLine, romAddress);
+                }
+                else //if cleanLine is not empty and not a label
+                {
+                    cleanAssemblyCode.add(cleanLine);
+                    romAddress++;
+                }
+
+                
+            }
+        }
+    }
+
+
+    //------ Make Second Pass ------\\
+
+    private void makeSecondPass() 
+    {
+        //initialize Variables
+        int variableAddress = 16;
+        int address;
+        String symbol;
+
+        for(String code: cleanAssemblyCode)
+        {
+            //Determine if it's an A-Instruction
+            if(code.startsWith("@"))
+            {
+                try
+                {
+                    address = Integer.parseInt(code.substring(1));
+                }
+                catch(NumberFormatException e) //Address was not a number (i.e. @R8)
+                {
+                    //Get the symbol instead
+                    symbol = code.substring(1);
+
+                    //If the symbol table already has the symbol inside it. Get its corresponding value.
+                    if(SymbolTable.contains(symbol))
+                    {
+                        address = SymbolTable.getAddress(symbol);
+                    }
+                    else
+                    {
+                        SymbolTable.add(symbol, variableAddress);
+                        address = variableAddress++;
+                    }
+                } 
+
+                parsedAssemblyInstructions.add(new AInstruction("@" + address));
+            }
+            else //Otherwise code must be a C-Instruction
+            {
+                parsedAssemblyInstructions.add(new CInstruction(code));
             }
         }
     }
 
 
     //------ Clean Method ------\\
+
+
+    private void insertLabelInSymbolTable(String cleanLine, int romAddress) 
+    {
+        //Extract label from parenthesis wrapping around it
+        String label = cleanLine.substring(1, cleanLine.length() -1);
+
+        //Add the label to the symbolTable at the correct rom address
+        SymbolTable.add(label, romAddress);
+    } 
+
 
     public String clean(String rawLine)
     {

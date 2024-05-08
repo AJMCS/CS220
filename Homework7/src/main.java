@@ -3,7 +3,7 @@ import java.io.FileNotFoundException;
 public class main 
 {
 
-    public static final String PROGRAM_NAME = "Max";
+    public static final String PROGRAM_NAME = "Rect";
     public static void main(String[] args)
     {
 
@@ -23,6 +23,10 @@ public class main
             AssemblyFileParser afp = new AssemblyFileParser(PROGRAM_NAME + ".asm");
             System.out.println("Cleaned Assembly Code:");
             System.out.println(afp);
+
+            //Write machinecode to .hack file
+            MachineCodeWriter.writeToBinaryFile(PROGRAM_NAME + ".hack", afp.getParsedAssemblyInstructions());
+
         }
         catch(FileNotFoundException e)
         {

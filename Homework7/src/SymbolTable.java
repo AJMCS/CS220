@@ -94,4 +94,10 @@ public class SymbolTable
         
         return true;
     }
+
+    //Contains
+    public static boolean contains(String symbol) 
+    {
+        return theTable.containsKey(symbol);
+    }
 }
