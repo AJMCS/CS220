@@ -1,0 +1,114 @@
+***Question 1***
+
+<letStatement>
+    <keyword> let </keyword>
+    <varName>
+        <identifier> greatest </identifier>
+    </varName>
+    <symbol> = </symbol>
+    <expression>
+        <term>
+        <stringConstant> x is greater </stringConstant>
+        </term>
+    </expression>
+    <symbol> ; </symbol>
+</letStatement>
+
+
+
+***Question 2***
+
+<doStatement>
+    <keyword> do </keyword>
+    <subroutineCall>
+        <className>
+            <identifier> Output </identifier>
+        </className>
+        <symbol> . </symbol>
+        <subroutineName>
+            <identifier> printInt </identifier>  
+        </subroutineName>
+        <symbol> ( </symbol>
+        <expressionList>
+            <expression>
+                <term>
+                    <varName>
+                        <identifier> greatest </identifier>
+                    </varName>
+                </term>
+            </expression>
+        </expressionList>
+        <symbol> ) </symbol>
+    </subroutineCall>
+    <symbol> ; </symbol>
+</doStatement>
+
+
+
+***Question 3***
+
+<class>
+    <keyword> class </class>
+    <className>
+        <identifier> Point </identifier>
+    </className>
+    <symbol> { </symbol>
+    <classVarDec>
+        <keyword> field </keyword>
+        <type>
+            <keyword> int </keyword>
+        </type>
+        <varName> 
+            <identifier> x </identifier> 
+        </varName>
+        <symbol> , </symbol>
+        <varName> 
+            <identifier> y </identifier> 
+        </varName>
+        <symbol> ; </symbol>
+    </classVarDec>
+    <subroutineDec>
+        <keyword> constructor </keyword>
+        <type>
+            <className>
+                <identifier> Point </identifier>
+            </className>
+        </type>
+        <subroutineName>
+            <identifier> new </identifier>
+        </subroutineName>
+        <symbol> ( </symbol>
+        <symbol> ) </symbol>
+        <subroutineBody>
+            <symbol> { </symbol>
+            <letStatement>
+                <keyword> let </keyword>
+                <varName>
+                    <identifier> x </identifier>
+                </varName>
+                <symbol> = </symbol>
+                <expression>
+                    <term>
+                        <integerConstant> 0 </integerConstant>
+                    </term>
+                </expression>
+                <symbol> ; </symbol>
+            </letStatement>
+            <letStatement>
+                <keyword> let </keyword>
+                <varName>
+                    <identifier> y </identifier>
+                </varName>
+                <symbol> = </symbol>
+                <expression>
+                    <term>
+                        <integerConstant> 0 </integerConstant>
+                    </term>
+                </expression>
+                <symbol> ; </symbol>
+            </letStatement>
+            <symbol> } </symbol>
+        </subroutineBody>
+    </subroutineDec>
+    <symbol> } </symbol>
+</class>
