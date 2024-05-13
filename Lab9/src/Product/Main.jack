@@ -1,0 +1,23 @@
+class Main
+{
+    function void main()
+    {
+        var int x, y, n, product;
+
+        let x = 2;
+        let y = 5;
+        let n = 1;
+        let product = 0;
+
+        while(~(n>y))
+        {
+            let product = product + x;
+            let n = n + 1;
+        }
+
+        do Output.printString("The Product is ");
+        do Output.printInt(product);
+
+        return;
+    }
+}

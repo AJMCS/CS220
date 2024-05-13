@@ -1,0 +1,40 @@
+class Fraction
+{
+    field int numerator, denominator;
+
+    constructor Fraction new(int x, int y)
+    {
+        let numerator = x;
+        let denominator = y;   
+        return this;
+    }
+
+    method int getNumerator()
+    {
+        return numerator;
+    }
+
+    method int getDenominator()
+    {
+        return denominator;
+    }
+
+    method void print()
+    {
+        do Output.printInt(numerator);
+        do Output.printString(" / ");
+        do Output.printInt(denominator);
+        return;
+    }
+
+    method Fraction plus(Fraction other)
+    {
+        var int num, den;
+
+        let num = (numerator * other.getDenominator()) + (other.getNumerator() * denominator);
+        let den = denominator * other.getDenominator();
+
+        return Fraction.new(num, den);
+    }
+
+}

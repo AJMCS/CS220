@@ -1,0 +1,31 @@
+class Main
+{
+    function void main()
+    {
+        var int birthYear, currentYear, currentAge, futureAge, futureYear;
+        let currentYear = 2024;
+
+        let birthYear = Keyboard.readInt("Please enter your birth year: ");
+        do Output.println();
+
+        let currentAge  = currentYear - birthYear;
+
+        do Output.printString("You are ");
+        do Output.printInt(currentAge);
+        do Output.printString(" years old.");
+        do Output.println();
+
+        let futureAge = Keyboard.readInt("Please enter a future age: ");
+        do Output.println();
+
+        let futureYear = birthYear + futureAge;
+
+        do Output.printString("You will be ");
+        do Output.printInt(futureAge);
+        do Output.printString(" in the year ");
+        do Output.printInt(futureYear);
+        do Output.printString(".");
+
+        return;
+    }
+}

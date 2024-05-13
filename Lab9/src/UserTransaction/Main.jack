@@ -1,0 +1,20 @@
+class Main
+{
+    function void main()
+    {
+        var int num1, num2, num3, average;
+
+        let num1 = Keyboard.readInt("Enter number 1:");
+        let num2 = Keyboard.readInt("Enter number 2:");
+        let num3 = Keyboard.readInt("Enter number 3:");
+
+        do Output.println();
+
+        let average = (num1 + num2 + num3) / 3;
+
+        do Output.printString("The average of the three numbers is: ");
+        do Output.printInt(average);
+
+        return;
+    }
+}

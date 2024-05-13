@@ -1,0 +1,23 @@
+class Main
+{
+    function void main()
+    {
+        var int result;
+        let result = Main.mult(5,4);
+        do Output.printInt(result);
+        return;
+    }
+
+    function int mult(int x, int y) 
+    {
+        var int sum,  n;
+        let n = 1;
+
+        while (~(n > y))
+        {
+            let sum = sum + x;
+            let n = n + 1;
+        }
+        return sum;
+    }
+}

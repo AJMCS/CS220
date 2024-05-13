@@ -1,4 +1,35 @@
 class Main
 {
+    function void main()
+    {
+        /*------KEYWORDS (for reference)-------*//*
+        * var - declare local variabels
+        * field - declare an instance variable
+        * static - declare a static variable
+        */
 
+        //Declare
+        var int x;
+        var int y;
+        var int greatest;
+
+        //Assign
+        let x = 3;
+        let y = 5;
+
+        //Decision
+        if(x > y)
+        {
+            let greatest = x;
+        }
+        else
+        {
+            let greatest = y;
+        }
+
+        //Print
+        do Output.printInt(greatest);
+        return;
+
+    }
 }

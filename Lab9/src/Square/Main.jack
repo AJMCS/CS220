@@ -1,0 +1,80 @@
+class Main
+{
+    function void main()
+    {
+        //Draw Rectangle
+        var int x1, x2, y1, y2;
+        let x1 = 0;
+        let y1 = 0;
+        let x2 = 30;
+        let y2 = 30;
+
+        while(x2 < 512)
+        {
+            do Screen.setColor(true);
+            do Screen.drawRectangle(x1,y1,x2,y2);
+            do Sys.wait(10);
+            do Screen.setColor(false);
+            do Screen.drawRectangle(x1,y1,x2,y2);
+
+            let x1 = x1 + 2;
+            let x2 = x2 + 2;
+        }
+
+        let x1 = x1 - 2;
+        let x2 = x2 - 2;
+
+        while(y2 < 256)
+        {
+            
+
+            do Screen.setColor(true);
+            do Screen.drawRectangle(x1,y1,x2,y2);
+            do Sys.wait(10);
+            do Screen.setColor(false);
+            do Screen.drawRectangle(x1,y1,x2,y2);
+
+            let y1 = y1 + 2;
+            let y2 = y2 + 2;
+        }
+
+        let y1 = y1 - 2;
+        let y2 = y2 - 2;
+
+        while(x2 > 30)
+        {
+            
+
+            do Screen.setColor(true);
+            do Screen.drawRectangle(x1,y1,x2,y2);
+            do Sys.wait(10);
+            do Screen.setColor(false);
+            do Screen.drawRectangle(x1,y1,x2,y2);
+
+            let x1 = x1 - 2;
+            let x2 = x2 - 2;
+        }
+
+        let x1 = x1 + 2;
+        let x2 = x2 + 2;
+
+        while(y2 > 30)
+        {
+            
+
+            do Screen.setColor(true);
+            do Screen.drawRectangle(x1,y1,x2,y2);
+            do Sys.wait(10);
+            do Screen.setColor(false);
+            do Screen.drawRectangle(x1,y1,x2,y2);
+
+            let y1 = y1 - 2;
+            let y2 = y2 - 2;
+        }
+
+        do Screen.setColor(true);
+        do Screen.drawRectangle(x1,y1,x2,y2);
+
+        return;
+    }
+}
