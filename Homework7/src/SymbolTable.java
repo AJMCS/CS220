@@ -30,7 +30,7 @@ public class SymbolTable
         theTable.put("R10", 10);
         theTable.put("R11", 11);
         theTable.put("R12", 12);
-        theTable.put("R33", 13);
+        theTable.put("R13", 13);
         theTable.put("R14", 14);
         theTable.put("R15", 15);
 

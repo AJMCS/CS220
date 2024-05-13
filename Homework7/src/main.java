@@ -3,7 +3,7 @@ import java.io.FileNotFoundException;
 public class main 
 {
 
-    public static final String PROGRAM_NAME = "Rect";
+    public static final String PROGRAM_NAME = "Pong";
     public static void main(String[] args)
     {
 
