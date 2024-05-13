@@ -1,0 +1,116 @@
+class Square
+{
+    //Declare variables
+    field int x, y, size;
+
+
+
+    //------ Constructor ------\\
+
+    constructor Square new(int newX, int newY, int newSize)
+    {
+        let x = newX;
+        let y = newY;
+        let size = newSize;
+        return this;
+    }
+
+
+
+    //------ Functionality Methods ------\\
+
+    method void dispose()
+    {
+        do Memory.deAlloc(this);
+        return;
+    }
+
+    method void draw()
+    {
+        do Screen.setColor(true);
+        do Screen.drawRectangle(x, y, x + size, y + size);
+        return;
+    }
+
+    method void erase()
+    {
+        do Screen.setColor(false);
+        do Screen.drawRectangle(x, y, x + size, y + size);
+        return;
+    }
+
+
+
+    //------ Change Size ------\\
+
+    method void decSize()
+    {
+        if(size > 2)
+        {
+            do erase();
+            let size = size - 2;
+        }
+
+        return;
+    }
+
+    method void incSize()
+    {
+        if(((x + size) < 510) & ((y + size) < 254))
+        {
+            do erase();
+            let size = size + 2;
+            do draw();
+        }
+
+        return;
+    }
+
+
+
+    //------ Change Direction ------\\
+
+    method void moveRight()
+    {
+        if ((x + size) < 510)
+        {
+            do erase();
+            let x = x + 2;
+            do draw();
+        }
+        return;
+    }
+
+    method void moveLeft()
+    {
+        if ((x + size) > 32)
+        {
+            do erase();
+            let x = x - 2;
+            do draw();
+        }
+        return;
+    }
+
+    method void moveUp()
+    {
+        if ((y + size) > 32)
+        {
+            do erase();
+            let y = y - 2;
+            do draw();
+        }
+        return;
+    }
+
+    method void moveDown()
+    {
+        if ((y + size) <  254)
+        {
+            do erase();
+            let y = y + 2;
+            do draw();
+        }
+        return;
+    }
+}

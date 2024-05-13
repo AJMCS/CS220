@@ -1,0 +1,16 @@
+class Main
+{
+    function void main()
+    {
+        //Declare variables
+        var SquareGame game;
+
+        //Run game
+        let game = SquareGame.new();
+        do game.run();
+
+        //Deallocate
+        do game.dispose();
+        return;
+    }
+}
