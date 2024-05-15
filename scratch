@@ -1,0 +1,35 @@
+class Point3D
+{
+    field int x, y, z;
+
+    constructor Point3D new(int aX, int aY, int aZ)
+    [
+        let x = aX;
+        let y = aY;
+        let z = aZ;
+        return this;
+    ]
+
+    method Point3D()
+    {
+        let x = 0;
+        let y = 0;
+        let z = 0;
+        return this;
+    }
+
+    method int getX()
+    {
+        return x;
+    }
+
+    method int getY()
+    {
+        return y;
+    }
+
+    method int getZ()
+    {
+        return z;
+    }
+}
